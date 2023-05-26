@@ -1,0 +1,30 @@
+{% extends '../base.html' %}
+
+{% block title %}Изменить{% endblock %}
+
+{% block content %}
+    <div class="content">
+        <div class="container">
+            <div class="posts">
+                <h1 class="mt-3 mb-3">Изменить пост</h1>
+                <form method="POST">
+                    {% csrf_token %}
+                    <div id="div_id_content" class="form-group"> <label for="id_content" class=" requiredField">
+                Контент<span class="asteriskField">*</span> </label> <div> <textarea name="content" cols="40" rows="10" class="textarea form-control" required="" id="id_content">
+                        {{ twit.content }}
+                    </textarea> </div> </div>
+                    {% if twit.twitImage %}
+                     <div id="div_id_twitImage" class="form-group"> <label for="id_twitImage" class="">
+                Ссылка на изображение
+            </label> <div> <input value="{{ twit.twitImage }}" type="text" name="twitImage" maxlength="500" class="textinput textInput form-control" id="id_twitImage"> </div> </div>
+                    {% else %}
+                     <div id="div_id_twitImage" class="form-group"> <label for="id_twitImage" class="">
+                Ссылка на изображение
+            </label> <div> <input value="" type="text" name="twitImage" maxlength="500" class="textinput textInput form-control" id="id_twitImage"> </div> </div>
+                    {% endif %}
+                    <button class="btn btn-primary mt-3 mb-3">Изменить</button>
+                </form>
+            </div>
+        </div>
+    </div>
+{% endblock %}

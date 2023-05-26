@@ -1,0 +1,63 @@
+{% extends '../base.html' %}
+
+{% block title %}Пост{% endblock %}
+
+{% block content %}
+    {% if user.is_authenticated %}
+    <a href="{% url 'addPost' %}" class="fixed-button">
+        <i class="fa-solid fa-plus"></i>
+    </a>
+   <div class="content">
+        <div class="container">
+            <div class="posts">
+                <h1 class="mt-3 mb-3">Пост пользователя @username</h1>
+                <div class="card mb-3">
+                    <div class="card-body">
+                        <div class="user-data">
+                            <div class="row">
+                                <div class="col-2">
+                                    <div class="avatar">
+                                        <p class="letter">U</p>
+                                    </div>
+                                </div>
+                                <div class="col-10">
+                                    <div class="username">
+                                        <h4>@{{ user.username }}</h4>
+                                        <p>Дата публикации: {{ twit.postDate }}</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        {% if twit.twitImage %}
+                        <div class="image-container">
+                            <img src="{{ twit.twitImage }}" width="100%" alt="">
+                        </div>
+                        {% else %}
+                        <span></span>
+                        {% endif %}
+                        <div class="user-content">
+                            <p>{{ twit.content }}</p>
+                        </div>
+                        <form method="post" action="{% url 'add_to_favorite' pk=twit.pk %}">
+                        {% csrf_token %}
+                        <button type="submit" class="btn btn-primary">Add to Favorites</button>
+                    </form>
+
+                        <a href="{% url 'editPost' pk=twit.pk %}" class="btn btn-primary">Изменить</a>
+                        <a href="{% url 'deletePost' pk=twit.pk %}" class="btn btn-danger">Удалить</a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    {% else %}
+    <div class="container mt-3 mb-3">
+        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+          <p>Чтобы прочитать пост, пройдите <a href="{% url 'signUp' %}">регистрацию</a></p>
+          <p>Если у Вас есть аккаунт, пройдите по <a href="{% url 'loginUser' %}">ссылке</a></p>
+          <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+    </div>
+    {% endif %}
+{% endblock %}

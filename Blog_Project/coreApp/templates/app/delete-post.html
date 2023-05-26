@@ -1,0 +1,18 @@
+{% extends '../base.html' %}
+
+{% block title %}Удалить пост{% endblock %}
+
+{% block content %}
+    <div class="content">
+        <div class="container">
+            <div class="posts">
+                <h1 class="mt-3 mb-3">Удалить пост {{ twit.pk }}?</h1>
+                <form method="POST">
+                    {% csrf_token %}
+                    <button class="btn btn-danger">Да</button>
+                    <a href="#" class="btn btn-primary">Нет</a>
+                </form>
+            </div>
+        </div>
+    </div>
+{% endblock %}

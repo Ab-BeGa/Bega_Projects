@@ -1,0 +1,14 @@
+{% extends '../base.html' %}
+
+{% block content %}
+  <h2>Избранные посты</h2>
+  {% if favorite_posts %}
+    <ul>
+      {% for favorite_post in favorite_posts %}
+        <li>{{ favorite_post.post.content }}</li>
+      {% endfor %}
+    </ul>
+  {% else %}
+    <p>Вы еще не добавили ни одного поста в избранное.</p>
+  {% endif %}
+{% endblock %}

@@ -1,0 +1,56 @@
+.header {
+    background-color: #1e82f6;
+    padding: 10px 0;
+}
+.menu-item {
+    color: #fff;
+    text-decoration: none;
+    margin-top: 10px;
+}
+.menu-item:hover {
+    color: #c2c2c2;
+}
+.avatar {
+    width: 48px;
+    height: 48px;
+    background-color: #1e82f6;
+    border-radius: 50%;
+    color: #fff;
+}
+.letter {
+    position: relative;
+    top: 12px;
+    left: 18px;
+}
+.username h4 {
+    font-size: 18px;
+}
+.username p {
+    font-size: 12px;
+}
+.user-content p {
+    text-align: justify;
+    font-size: 12px;
+}
+.fixed-button {
+    z-index: 99;
+    position: fixed;
+    bottom: 10px;
+    right: 10px;
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    background-color: #1e82f6;
+    color: #fff;
+    transition: 0.3s ease-in-out;
+}
+.fixed-button i {
+    position: relative;
+    top: 12px;
+    left: 17px;
+}
+
+.fixed-button:hover {
+    background-color: #111;
+    color: #fff;
+}
